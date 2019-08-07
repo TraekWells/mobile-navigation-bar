@@ -2,6 +2,11 @@
 $color-gray-light: hsla(0, 0, 97, 1);
 $color-gray-light-2: hsla(0, 0, 65, 1);
 
+$color-home: hsla(40, 100, 60, 1);
+$color-gallery: hsla(269, 96, 38, 1);
+$color-likes: hsla(350, 80, 52, 1);
+$color-profile: hsla(121, 56, 48, 1);
+
 *,
 *:before,
 *:after {
@@ -23,6 +28,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.2s linear;
 }
 
 .nav {
@@ -30,7 +36,7 @@ body {
   display: flex;
   justify-content: space-around;
   width: 50rem;
-  border-radius: 0 0 3rem 3rem;
+  border-radius: 0 0 2.5rem 2.5rem;
   box-shadow: 0 0.3rem 0.8rem hsla(0, 0, 0, 0.1);
   overflow: hidden;
 
@@ -41,18 +47,93 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 2rem 0;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 0.5rem;
+      width: 0%;
+      bottom: 0;
+      transition: 0.2s ease-out width;
+    }
+
+    &.active.home {
+      &::after {
+        background-color: $color-home;
+        width: 60%;
+      }
+
+      .nav__item__icon {
+        fill: $color-home;
+      }
+
+      .nav__item__title {
+        color: $color-home;
+      }
+    }
+
+    &.active.gallery {
+      &::after {
+        background-color: $color-gallery;
+        width: 60%;
+      }
+
+      .nav__item__icon {
+        fill: $color-gallery;
+      }
+
+      .nav__item__title {
+        color: $color-gallery;
+      }
+    }
+
+    &.active.likes {
+      &::after {
+        background-color: $color-likes;
+        width: 60%;
+      }
+
+      .nav__item__icon {
+        fill: $color-likes;
+      }
+
+      .nav__item__title {
+        color: $color-likes;
+      }
+    }
+
+    &.active.profile {
+      &::after {
+        background-color: $color-profile;
+        width: 60%;
+      }
+
+      .nav__item__icon {
+        fill: $color-profile;
+      }
+
+      .nav__item__title {
+        color: $color-profile;
+      }
+    }
+
     &:hover {
       cursor: pointer;
     }
+
     &__icon {
-      height: 3rem;
+      height: 2.5rem;
       margin-bottom: 1rem;
       fill: $color-gray-light-2;
+      pointer-events: none;
     }
+
     &__title {
       font-size: 1.5rem;
       color: $color-gray-light-2;
       text-align: center;
+      pointer-events: none;
     }
   }
 }
